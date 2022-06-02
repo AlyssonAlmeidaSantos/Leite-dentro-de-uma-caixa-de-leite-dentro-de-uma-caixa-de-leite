@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" href="imgs/null.png" />
     <link rel="stylesheet" href="css\style.css" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,25 +10,69 @@
     <title>Milky Site :D</title>
 </head>
 
-<body>
+<body id="body">
     <div id="navbar" class="navbar">
-        <div class="logo">
-            Logo Foda
-        </div>
+        <div class="logo"></div>
         <a href="">Milk</a>
         <a href="">Milk 2</a>
         <a href="">Milk 3?</a>
-        <button class="btn_login">Sign In</button>
+        <a href="">Sign In </a>
     </div>
     <div class="container_banner">
-        <div class="titulo"></div>
+        <img src="../References/girl/MC1.gif" class="garotinha">
+        <div class="titulo">
+            <p>MILK OUTSIDE A BAG OF MILK OUTSIDE A BAG OF MILK...</p>
+        </div>
         <video autoplay loop poster muted src="imgs/room-animated.mp4" type="video/mp4"></video>
     </div>
     <div class="container_Corpo">
-        <div class="corpo"></div>
+        <div class="corpo">
+            Aliquam vel quam sit amet eros ullamcorper mollis. Sed vestibulum dapibus diam non egestas. Donec est tellus, sagittis a suscipit tincidunt, eleifend ut urna. Nullam cursus dapibus justo, at varius turpis porttitor convallis. Etiam vel purus rhoncus,
+            efficitur eros vitae, congue risus. Donec eget accumsan ante. Praesent semper consequat risus, ac condimentum lacus finibus in. Cras vel nulla nec turpis gravida tincidunt. Vivamus ut libero eleifend, porta augue sit amet, malesuada sapien.
+            Sed enim lacus, euismod sit amet fermentum id, interdum porttitor nibh. Phasellus ultricies sollicitudin nunc. Sed justo libero, luctus sed arcu et, tempus tincidunt tortor. In tincidunt mi ut tortor porttitor, ac blandit lectus efficitur.
+            Curabitur lacinia velit sit amet sem posuere tincidunt id in erat.
+            <br><br> Nulla sit amet quam vitae mauris venenatis tempor. Aliquam sed quam iaculis lectus fringilla commodo. Nunc ut tellus risus. Sed quis felis molestie, aliquam enim vel, elementum justo. Vestibulum ante ipsum primis in faucibus orci
+            luctus et ultrices posuere cubilia curae; Aenean imperdiet maximus ornare. Phasellus posuere sem iaculis ante fermentum ornare. In vestibulum mauris dolor, vel varius elit faucibus et. Duis at ante vulputate, scelerisque quam eget, dignissim
+            metus. Cras at ultrices purus, nec pellentesque ante. Aliquam faucibus aliquam massa sit amet ullamcorper. Donec a turpis eu dolor euismod placerat quis id ipsum. Quisque a nisi sit amet nunc rutrum bibendum a non tellus. Aliquam vitae facilisis
+            sapien.
+
+
+            <svg viewbox="0 0 100 20">
+                <defs>
+                  <linearGradient id="gradient">
+                    <stop color="#a83228"/>
+                  </linearGradient>
+                  <pattern id="wave" x="0" y="-0.5" width="100%" height="100%" patternUnits="userSpaceOnUse">
+                    <path  id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)"> 
+                      <animateTransform
+                          attributeName="transform"
+                          begin="2s"
+                          dur="5s"
+                          type="translate"
+                          from="0,0"
+                          to="40,0"
+                          repeatCount="indefinite" />
+                    </path>
+                  </pattern>
+                </defs>
+                <text text-anchor="middle" x="50" y="15" font-size="17" fill="#a83228" fill-opacity="1">MILK INSIDE</text>
+                <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)" fill-opacity="0.4">MILK INSIDE</text>
+              </svg>
+
+        </div>
     </div>
 </body>
 
 </html>
 <script>
+    var lastScrollTop = 0;
+    window.addEventListener("scroll", function() { // or window.addEventListener("scroll"....
+        var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+        if (st > lastScrollTop) {
+            console.log('kkkkkk')
+        } else {
+            console.log('KKKKKKKK')
+        }
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    }, false);
 </script>
