@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milky Site :D</title>
 </head>
+<!-- corpo com box das falas do jogo -->
 
 <body id="body">
     <div id="navbar" class="navbar">
@@ -18,6 +19,7 @@
         <a href="">Milk 3?</a>
         <a href="">Sign In </a>
     </div>
+    <div class="gradiente"></div>
     <div class="container_banner">
         <img src="../References/girl/MC1.gif" class="garotinha">
         <div class="titulo">
@@ -27,26 +29,17 @@
     </div>
     <div class="container_Corpo">
         <div class="corpo">
-            Aliquam vel quam sit amet eros ullamcorper mollis. Sed vestibulum dapibus diam non egestas. Donec est tellus, sagittis a suscipit tincidunt, eleifend ut urna. Nullam cursus dapibus justo, at varius turpis porttitor convallis. Etiam vel purus rhoncus,
-            efficitur eros vitae, congue risus. Donec eget accumsan ante. Praesent semper consequat risus, ac condimentum lacus finibus in. Cras vel nulla nec turpis gravida tincidunt. Vivamus ut libero eleifend, porta augue sit amet, malesuada sapien.
-            Sed enim lacus, euismod sit amet fermentum id, interdum porttitor nibh. Phasellus ultricies sollicitudin nunc. Sed justo libero, luctus sed arcu et, tempus tincidunt tortor. In tincidunt mi ut tortor porttitor, ac blandit lectus efficitur.
-            Curabitur lacinia velit sit amet sem posuere tincidunt id in erat.
-            <br><br> Nulla sit amet quam vitae mauris venenatis tempor. Aliquam sed quam iaculis lectus fringilla commodo. Nunc ut tellus risus. Sed quis felis molestie, aliquam enim vel, elementum justo. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia curae; Aenean imperdiet maximus ornare. Phasellus posuere sem iaculis ante fermentum ornare. In vestibulum mauris dolor, vel varius elit faucibus et. Duis at ante vulputate, scelerisque quam eget, dignissim
-            metus. Cras at ultrices purus, nec pellentesque ante. Aliquam faucibus aliquam massa sit amet ullamcorper. Donec a turpis eu dolor euismod placerat quis id ipsum. Quisque a nisi sit amet nunc rutrum bibendum a non tellus. Aliquam vitae facilisis
-            sapien.
-
 
             <svg viewbox="0 0 100 20">
                 <defs>
                   <linearGradient id="gradient">
-                    <stop color="#a83228"/>
+                    <stop color="#000"/>
                   </linearGradient>
                   <pattern id="wave" x="0" y="-0.5" width="100%" height="100%" patternUnits="userSpaceOnUse">
-                    <path  id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)"> 
+                    <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V-2 H-40z"> 
                       <animateTransform
                           attributeName="transform"
-                          begin="2s"
+                          begin="0s"
                           dur="5s"
                           type="translate"
                           from="0,0"
@@ -55,10 +48,22 @@
                     </path>
                   </pattern>
                 </defs>
-                <text text-anchor="middle" x="50" y="15" font-size="17" fill="#a83228" fill-opacity="1">MILK INSIDE</text>
-                <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)" fill-opacity="0.4">MILK INSIDE</text>
-              </svg>
-
+                <text text-anchor="middle" x="50" y="19" font-size="25" fill="#8828a8"  fill-opacity="1">Milk Inside  </text>
+                <text text-anchor="middle" x="50" y="19" font-size="25" fill="url(#wave)" fill-opacity="0.5">Milk Inside  </text>
+            </svg>
+            <p> The game’s objective is simply to retrieve a bag of milk, which in itself may seem like a bizarrely mundane task. But the game’s aesthetic is indicative of how the unnamed young female protagonist feels especially hopeless about such a seemingly
+                trivial matter, from the distorted text sound when proceeding with the narrative to the droning, ominous main music played throughout the first scene. It is obvious from the start how important our choices are for the sake of our character’s
+                wellbeing. In fact, a bad ending involving a jump scare will quickly end the game if you choose to question their mental state too often or be dismissive of her! In this way, the title effectively relays the importance of understanding
+                one another without presuming or judging, and places great importance on how much we value and care about this troubled young girl by the time she opens up about her trauma, and finally explains how her anxiety and current mental state
+                came to be.
+            </p>
+            <p> It’s perhaps no surprise when the experience turns out to be quite “meta”; the lead character acknowledges that they are in a game and that “you”, the player, do not exist; instead your selections are what part of her happens to be thinking.
+                This is reinforced very effectively with the emphasis on the concept of repetition in the game: as seen everywhere from its title to sequences where your input needs to be retyped or selected multiple times. It demonstrates that the girl
+                is clearly uncomfortable with being reassured, as she feels she cannot believe or accept your words. This is a deliberate subversion of visual novel conventions, where choices are sacrosanct, and is played around with exceptionally well
+                to express this struggle from both our point of view and hers. Her inner thoughts and value of herself are so critical and full of self-loathing that any encouragement or guidance falls on deaf ears, making our perspective feel insignificant
+                and helpless, but also providing a realistic representation of living with mental health issues. This could be due to the girl’s habit of pushing others away due to her trauma — or perhaps because her only current relationship is a very
+                distant, poor one with her mother.
+            </p>
         </div>
     </div>
 </body>
@@ -66,13 +71,13 @@
 </html>
 <script>
     var lastScrollTop = 0;
-    window.addEventListener("scroll", function() { // or window.addEventListener("scroll"....
-        var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+    window.addEventListener("scroll", function() {
+        var st = window.pageYOffset || document.documentElement.scrollTop;
         if (st > lastScrollTop) {
             console.log('kkkkkk')
         } else {
             console.log('KKKKKKKK')
         }
-        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+        lastScrollTop = st <= 0 ? 0 : st;
     }, false);
 </script>
