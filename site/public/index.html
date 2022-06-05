@@ -14,20 +14,24 @@
 <body id="body">
     <div id="navbar" class="navbar">
         <div id="logo" class="logo"></div>
-        <a id="anchorNavbar1" href="">História</a>
-        <a id="anchorNavbar2" href="">Jogo</a>
-        <a id="anchorNavbar3" href="">Relation</a>
-        <a id="anchorNavbar4" href="">Sign In </a>
+        <a id="anchorNavbar1" href="">Milk Inside </a>
+        <a id="anchorNavbar2" href="">Milk Outside</a>
+        <a id="anchorNavbar3" href="">Criador</a>
+        <a id="anchorNavbar4" href="cadastro.html">Sign In </a>
     </div>
-    <div class="gradiente"></div>
+    <div class="gradiente_banner"></div>
     <div class="container_banner">
-        <img src="../References/girl/MC1.gif" class="garotinha">
+        <img src="imgs/MC1.gif" class="garotinha">
         <div class="titulo">
             <p>MILK OUTSIDE A BAG OF MILK OUTSIDE A BAG OF MILK...</p>
         </div>
         <video autoplay loop poster muted src="imgs/room-animated.mp4" type="video/mp4"></video>
     </div>
-    <div class="container_Corpo">
+
+    <div id="container_Corpo" class="container_Corpo">
+        <div class="gradiente_corpoX"></div>
+        <div class="gradiente_corpoY"></div>
+
         <div class="corpoMOBM">
             <div class="subtituloMOBM">
                 <div class="svgs">
@@ -93,20 +97,19 @@
                     <br />- Às vezes sinto que o mundo inteiro está fingindo ser louco.
                     <br />- Como se estivesse tentando me convencer de algo que não existe.
                     <br />(Isso é estranho, não é?) Este jogo é a continuação de Milk inside a bag of milk inside a bag of milk. Os eventos desse jogo começam onde os do primeiro terminam.
-
                 </p>
         </div>
-        <div id="corpo" class="corpoMIBM">
+        <div id="corpoMIBM" class="corpoMIBM">
             <div class="subtituloMIBM">
                 <div class="svgs">
                     <svg class="svg1" viewbox="0 0 100 20">
-                        <defs>
-                          <linearGradient id="gradient">
-                            <stop color="#000"/>
-                          </linearGradient>
-                          <pattern id="wave2" x="0" y="-0.5" width="100%" height="100%" patternUnits="userSpaceOnUse">
-                            <path id="wave2Path" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V-2 H-40z"> 
-                              <animateTransform
+                <defs>
+                  <linearGradient id="gradient">
+                    <stop color="#000"/>
+                  </linearGradient>
+                  <pattern id="wave2" x="0" y="-0.5" width="100%" height="100%" patternUnits="userSpaceOnUse">
+                    <path id="wave2Path" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V-2 H-40z"> 
+                      <animateTransform
                                   attributeName="transform"
                                   begin="0s"
                                   dur="6s"
@@ -155,6 +158,19 @@
                 <br />Soluções de áudio autênticas
             </p>
         </div>
+        <footer class="footer">
+            <div class="logo"></div>
+            <div class="footer_texto">
+                <span>
+                    Todos os direitos reservados &copy;Nikita Kryukov
+                </span>
+            </div>
+            <div class="footer_redes">
+                <div class="github_icon"></div>
+                <div class="steam_icon"></div>
+                <div class="twitter_icon"></div>
+            </div>
+        </footer>
     </div>
 </body>
 
@@ -163,20 +179,22 @@
     window.onscroll = function(event) {
         if (this.scrollY > 2800) {
             navbar.style.backgroundColor = '#a8285d27';
-            navbar.style.borderBottom = '1px solid #a8285d';
             anchorNavbar1.style.color = '#a8285d';
             anchorNavbar2.style.color = '#a8285d';
             anchorNavbar3.style.color = '#a8285d';
             anchorNavbar4.style.color = '#a8285d';
-            logo.style.filter = 'hue-Rotate(-25deg)'
+            logo.style.filter = 'hue-Rotate(-25deg)';
+            container_Corpo.style.filter = 'hue-rotate(-25deg)';
+            corpoMIBM.style.filter = 'hue-rotate(25deg)';
         } else {
             navbar.style.backgroundColor = '#a8322827';
-            navbar.style.borderBottom = '1px solid #a83228';
             anchorNavbar1.style.color = '#a83228';
             anchorNavbar2.style.color = '#a83228';
             anchorNavbar3.style.color = '#a83228';
             anchorNavbar4.style.color = '#a83228';
             logo.style.filter = 'hue-Rotate(0)'
+            container_Corpo.style.filter = 'hue-rotate(0)';
+            corpoMIBM.style.filter = 'hue-rotate(0)';
         }
     }
 </script>

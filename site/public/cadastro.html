@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="imgs/null.png" />
+    <link rel="stylesheet" href="css\style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milky Site :D</title>
+</head>
+
+<body>
+    <div id="navbar" class="navbar">
+        <div id="logo" class="logo"></div>
+        <a id="anchorNavbar1" href="">História</a>
+        <a id="anchorNavbar2" href="">Jogo</a>
+        <a id="anchorNavbar3" href="">Relation</a>
+        <a id="anchorNavbar4" href="cadastro.html">Sign In </a>
+    </div>
+
+    <div class="container">
+        <div class="formCad">
+
+            <span class="tipo_campo">Nome:</span>
+            <input id="nome_input" type="text" placeholder="Seu nome">
+
+            <span class="tipo_campo">E-mail:</span>
+            <input id="email_input" type="text" placeholder="meuemail@provedor.com">
+
+            <span class="tipo_campo">Senha:</span>
+            <input id="senha_input" type="password" placeholder="******">
+
+            <span class="tipo_campo">Confirmação da Senha:</span>
+            <input id="confirmacao_senha_input" type="password" placeholder="******">
+
+            <button class="btn" onclick="Cadastrar()">Cadastrar</button>
+            <div id="mensagem_erro"></div>
+        </div>
+
+        <footer class="footer">
+            <div class="logo"></div>
+            <div class="footer_texto">
+                <span>
+                    Todos os direitos reservados &copy;Nikita Kryukov
+                </span>
+            </div>
+            <div class="footer_redes">
+                <div class="github_icon"></div>
+                <div class="steam_icon"></div>
+                <div class="twitter_icon"></div>
+            </div>
+        </footer>
+</body>
+
+</html>
+
+<script>
+    function Cadastrar() {
+
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            alert('Preencha todos os campos!')
+        } else {
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function(resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "index.html";
+                    }, "2000")
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function(resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
+
+        }
+    }
+</script>

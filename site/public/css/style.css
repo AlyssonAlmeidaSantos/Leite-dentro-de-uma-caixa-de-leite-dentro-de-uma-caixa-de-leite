@@ -1,0 +1,371 @@
+ @font-face {
+     font-family: 'cgphenixamericanregular';
+     src: url('../fonts/gotmilk-font-webfont.woff2') format('woff2');
+     font-weight: normal;
+     font-style: normal;
+ }
+ 
+ @font-face {
+     font-family: 'manoleteregular';
+     src: url('../fonts/manolete-webfont.woff2') format('woff2');
+     font-weight: normal;
+     font-style: normal;
+ }
+ 
+ @font-face {
+     font-family: 'retro_gamingregular';
+     src: url('../fonts/retro_gaming-webfont.woff2') format('woff2');
+     font-weight: normal;
+     font-style: normal;
+ }
+ 
+ ::-webkit-scrollbar {
+     width: 10px;
+ }
+ 
+ ::-webkit-scrollbar-track {
+     background-color: #541032;
+     border-radius: 10px;
+     box-shadow: inset 0 0 5px #a21111;
+ }
+ 
+ ::-webkit-scrollbar-thumb {
+     border-radius: 10px;
+     background: #a83228;
+ }
+ 
+ ::-webkit-scrollbar-thumb:hover {
+     background: #a02217;
+ }
+ 
+ html {
+     background-color: black;
+     overflow-x: hidden;
+ }
+ 
+ body {
+     margin: 0;
+ }
+ 
+ .logo {
+     height: 80px;
+     width: 80px;
+     background-size: cover;
+     background-image: url(../imgs/logo.jpg);
+     border-radius: 20px;
+ }
+ 
+ .navbar {
+     height: 110px;
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     align-items: center;
+     position: fixed;
+     z-index: 2;
+     background-color: #a8322827;
+     background-image: linear-gradient(to left, #000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #000);
+ }
+ 
+ a {
+     text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+     font-size: 65px;
+     text-decoration: none;
+     font-family: cgphenixamericanregular;
+     color: #a83228;
+ }
+ 
+ .container_banner {
+     width: 100%;
+     height: 951px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ video {
+     display: flex;
+     align-self: flex-start;
+     width: 100%;
+     height: 950px;
+     position: absolute;
+     z-index: -1;
+ }
+ 
+ .titulo {
+     display: flex;
+     align-items: center;
+     position: absolute;
+     user-select: none;
+     width: 700px;
+     height: 300px;
+     margin-right: 700px;
+     font-size: 90px;
+     font-family: manoleteregular;
+     color: #16101e;
+     text-shadow: -2px -2px 0 #ab1524, 2px -2px 0 #ab1524, -2px 2px 0 #ab1524, 2px 2px 0 #ab1524;
+ }
+ 
+ .garotinha {
+     width: 700px;
+     height: 758px;
+     margin-left: 500px;
+     margin-top: 100px;
+     position: absolute;
+ }
+ 
+ .gradiente_banner {
+     background-image: linear-gradient(#00000000, #00000000, #00000000, #000);
+     width: 100%;
+     height: 960px;
+     position: absolute;
+     z-index: 1;
+ }
+ 
+ .gradiente_corpoY {
+     background-image: linear-gradient( #000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000);
+     width: 100%;
+     height: 4400px;
+     position: absolute;
+ }
+ 
+ .gradiente_corpoX {
+     background-image: linear-gradient(to left, #000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #000);
+     width: 100%;
+     height: 5350px;
+     position: fixed;
+ }
+ 
+ .container_Corpo {
+     height: 4400px;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     justify-content: flex-end;
+     background-image: url(../../../References/bg/TR1.jpg);
+     background-size: cover;
+     background-position: center;
+ }
+ 
+ .corpoMIBM,
+ .corpoMOBM {
+     width: 60%;
+     height: 1500px;
+     padding: 100px;
+     line-height: 40px;
+     border-radius: 50px;
+     margin-bottom: 200px;
+     font-family: retro_gamingregular;
+     font-size: 25px;
+     background-color: #000000;
+ }
+ 
+ .corpoMOBM {
+     margin-top: 200px;
+     height: 1700px;
+     color: #a83228;
+     border: 5px solid #bb000050;
+ }
+ 
+ .corpoMIBM {
+     color: #a8285d;
+     border: 5px solid #a8285d50;
+     z-index: 2;
+ }
+ 
+ .MIBM,
+ .MOBM {
+     width: 650px;
+     height: 250px;
+     margin: 80px;
+     border-radius: 60px;
+     background-size: cover;
+ }
+ 
+ .MIBM {
+     background-image: url(../imgs/MIBM-cover-high-res.jpg);
+ }
+ 
+ .MIBM:hover {
+     transition: 5s;
+     background-image: url(../imgs/MIBM-cover.jpg);
+ }
+ 
+ .MOBM {
+     background-image: url(../imgs/olhinhos.gif);
+ }
+ /* disco rodando pra musiquinha
+.MOBM {
+    border: 3px solid gray;
+    background-position: center;
+    border-radius: 500px;
+    background-image: url(../../References/bg/OOOOOOOO-writed.jpg);
+}
+ @-webkit-keyframes rotate {
+     from {
+         -webkit-transform: rotate(0deg);
+     }
+     to {
+         -webkit-transform: rotate(360deg);
+     }
+ }
+ 
+ .MOBM {
+     -webkit-animation-name: rotate;
+     -webkit-animation-duration: 120s;
+     -webkit-animation-iteration-count: infinite;
+     -webkit-animation-timing-function: linear;
+ } */
+ 
+ .subtituloMOBM {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ 
+ .subtituloMIBM {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ 
+ text {
+     font-family: cgphenixamericanregular;
+ }
+ 
+ svg {
+     max-width: 500px;
+     height: 200px;
+     font-weight: bold;
+ }
+ 
+ .subtituloMIBM .svgs {
+     margin-left: -30px;
+ }
+ 
+ .subtituloMOBM .svg1 {
+     margin-right: -20px;
+ }
+ 
+ .subtituloMOBM .svg2 {
+     margin-left: -66px;
+ }
+ 
+ .subtituloMIBM .svg1 {
+     margin-right: -10px;
+ }
+ 
+ .subtituloMIBM .svg2 {
+     margin-left: -96px;
+ }
+ 
+ .footer {
+     width: 100%;
+     height: 300px;
+     display: flex;
+     align-items: center;
+     flex-direction: row;
+     filter: hue-rotate(25deg);
+     justify-content: space-evenly;
+     background-color: rgb(14, 1, 8);
+     color: white;
+     /*background-image: url(../../../References/bg/star-bg-espelhado.jpg);
+     background-position: center -10px;
+     background-repeat: no-repeat;*/
+ }
+ 
+ .footer .logo {
+     width: 120px;
+     height: 120px;
+     border-radius: 25px;
+     background-image: url(../imgs/logo.jpg);
+ }
+ 
+ .footer_texto {
+     font-size: 40px;
+     font-family: cgphenixamericanregular;
+ }
+ 
+ .footer_redes {
+     width: 350px;
+     height: 100px;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+ }
+ 
+ .footer_redes div {
+     width: 80px;
+     height: 80px;
+ }
+ 
+ .github_icon {
+     border: 1px solid #a8285d;
+     border-radius: 50px;
+     background-image: url(../imgs/github-icon.png);
+     background-size: cover;
+ }
+ 
+ .steam_icon {
+     border: 1px solid #a8285d;
+     border-radius: 50px;
+     background-image: url(../imgs/steam-icon.png);
+     background-size: cover;
+ }
+ 
+ .twitter_icon {
+     border: 1px solid #a8285d;
+     border-radius: 50px;
+     background-image: url(../imgs/twitter-icon.jpg);
+     background-size: cover;
+ }
+ /* Tela de cadastro */
+ 
+ .container {
+     width: 100%;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ .formCad {
+     width: 500px;
+     height: 600px;
+     padding: 25px;
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     justify-content: space-around;
+     border: 1px solid yellow;
+     border-radius: 50px;
+     background-color: #ba206028;
+     color: #ba2060;
+ }
+ 
+ .formCad span {
+     font-family: cgphenixamericanregular;
+     font-size: 40px;
+     width: 100%;
+ }
+ 
+ .formCad input {
+     color: white;
+     padding-left: 22px;
+     border: 0px solid #a8285d;
+     border-radius: 5px;
+     background-color: #a8285d8e;
+     width: 400px;
+     height: 40px;
+     margin: 3px;
+     margin-bottom: 10px;
+ }
+ 
+ .formCad button {
+     width: 100px;
+     height: 50px;
+ }
