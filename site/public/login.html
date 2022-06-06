@@ -21,20 +21,21 @@
         <a id="a_Nikita" href="">Play</a>
         <a id="a_Cadastro" href="cadastro.html">Sign In </a>
     </div>
-    <!--<video autoplay loop poster muted src="../public/imgs/TP-bg-animated.mp4" type="video/mp4"></video>-->
     <div class="container_formLog">
-        <div class="screen">
-
-            <div class="ambiente">
+        <div class="screen" id="div_screen">
+            <div class="ambiente" id="ambiente">
                 <div class="btns" id="btns">
-                    <div class="grupoP1">
-                        <button onclick="Pergunta1_R1()" class="P1-R1">Viemos comprar leite</button>
+                    <div class="grupoB1" id="grupoB1">
+                        <button onclick="Pergunta1_R(bom = true)" class="P1-R1">(Viemos comprar leite)</button>
+                        <button onclick="Pergunta1_R()" class="P1-R2">(Peça o leite, imbecil)</button>
                     </div>
-                    <div class="grupoP2">
-                        <button onclick="Pergunta1_R2()" class="P1-R2">Burra pra krl namoral</button>
+                    <div class="grupoB2" id="grupoB2">
+                        <button onclick="entrar()" class="btnlogin">(Entregar)</button>
+                        <button onclick="morte()" class="btnlogin">(Eu mudei de ideia, não te aguento mais)</button>
+
                     </div>
                 </div>
-                <img class="npc" src="../public/imgs/npc.png"></div>
+                <img class="npc" src="../imgs/npc.png" id="npc"></div>
             <div id="L_typedtext" class="formLog"></div>
         </div>
     </div>
@@ -59,8 +60,6 @@
             </a>
         </div>
     </footer>
-
-
 </body>
 
 </html>
@@ -74,19 +73,19 @@
 
     var L_iTextPos = 0; // initialise text position
     var L_sContents = ''; // initialise contents variable
-    var LiRow; // initialise current row
+    var L_iRow; // initialise current row
 
-    var respostas = [];
+    var strikes = 0;
 
     function typewriter() {
         L_sContents = ' ';
         L_iIndex = 0;
         L_iScrollAt = 20;
-        LiRow = Math.max(0, L_iIndex - L_iScrollAt);
+        L_iRow = Math.max(0, L_iIndex - L_iScrollAt);
         var destination = document.getElementById("L_typedtext");
 
-        while (LiRow < L_iIndex) {
-            L_sContents += L_aText[LiRow++] + '<br />';
+        while (L_iRow < L_iIndex) {
+            L_sContents += L_aText[L_iRow++] + '<br />';
         }
         destination.innerHTML = L_sContents + L_aText[L_iIndex].substring(0, L_iTextPos);
         if (L_iTextPos++ == L_iArrLength) {
@@ -105,25 +104,57 @@
     function IniciarDialogo() {
         btns.style.zIndex = '1';
     }
-    const myTimeout = setTimeout(IniciarDialogo, 5000);
+    const TimeoutDialogo = setTimeout(IniciarDialogo, 5000);
 
-    function Pergunta1_R1() {
+    function Pergunta1_R(bom) {
+        if (bom) {
+            L_typedtext.innerHTML = '';
+            L_aText = Array(
+                "Dê-me seu endereço e sua chave."
+            );
+            typewriter();
+            const TimeoutLogin = setTimeout(AbrirLogin, 5000);
+        } else {
+            morte();
+        }
+        grupoB1.style.display = 'none';
+    }
+
+    function AbrirLogin() {
+        grupoB2.style.display = 'block';
+        L_typedtext.innerHTML = '';
+        L_typedtext.innerHTML += `
+        Endereço: <input id="email_input" type="text" placeholder="Email"> <br />
+        Segredo: <input id="senha_input" type="password" placeholder="Senha">
+        `;
+    }
+
+    function morte() {
+        grupoB1.style.display = 'none';
+        grupoB2.style.display = 'none';
+        npc.style.display = 'none';
+        ambiente.style.backgroundImage = 'url(../imgs/MIBM-cover.jpg)';
+        L_typedtext.innerHTML = '';
+        L_aText = Array(
+            "Parece que que você não me ajuda...",
+        );
+        typewriter();
+        const TimeIntervalRepetição = setInterval(Repetição, 1000);
+    }
+
+    function Repetição() {
+        L_typedtext.innerHTML += "Você não me ajuda...";
 
     }
 
     function entrar() {
-        aguardar();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
             return false;
-        } else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -143,6 +174,7 @@
 
             if (resposta.ok) {
                 console.log(resposta);
+                grupoB2.style.display = 'none';
 
                 resposta.json().then(json => {
                     console.log(json);
@@ -164,7 +196,6 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
@@ -173,9 +204,5 @@
         })
 
         return false;
-    }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
     }
 </script>

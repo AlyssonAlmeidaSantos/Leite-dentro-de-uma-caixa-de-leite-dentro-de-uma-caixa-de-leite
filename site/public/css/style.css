@@ -352,7 +352,7 @@
      flex-direction: row;
      justify-content: space-around;
      align-items: flex-end;
-     background-image: url(../../../References/miscellaneous/quarto-bg-2.png);
+     background-image: url(../imgs/quarto-bg-2.png);
      background-size: cover;
  }
  
@@ -598,11 +598,23 @@
      border: 5px solid #9a104a;
  }
  
- .grupoP1 {
+ .grupoB1,
+ .grupoB2 {
      width: inherit;
      margin-top: 100px;
  }
  
- .grupoP2 {
-     width: inherit;
+ .grupoB2 {
+     display: none;
+ }
+ 
+ .formLog input {
+     margin-bottom: -30px;
+     font-family: CPCompanyFlashBig-W03-Regular;
+     font-size: inherit;
+     width: 500px;
+     height: 50px;
+     border: 3px solid #9a104a;
+     background-color: #000;
+     color: #bb1526;
  }

@@ -158,7 +158,14 @@
             );
             typewriter();
         } else {
-            milkGirl_text.innerHTML = 'Obrigada ' + varNome + ', obrigada por me ajudar.';
+            mensagem_erro.innerHTML = 'Trad: Vamos comprar leite';
+            milkGirl.style.backgroundImage = 'url(imgs/happy-1.png)';
+            var fraseCadastrado = '- Obrigada ' + nomeVar + ', obrigada por me ajudar.';
+            typedtext.innerHTML = '';
+            aText = Array(
+                fraseCadastrado
+            );
+            typewriter();
             fetch("/usuarios/cadastrar", {
                 method: "POST",
                 headers: {
@@ -174,14 +181,13 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    mensagem_erro.innerHTML = "Trad: Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                    mensagem_erro.innerHTML = "Trad: Vamos comprar leite!!";
 
                     setTimeout(() => {
                         window.location = "Login.html";
                     }, "2000")
 
                 } else {
-                    mensagem_erro.innerHTML = '*Oh não';
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
             }).catch(function(resposta) {
