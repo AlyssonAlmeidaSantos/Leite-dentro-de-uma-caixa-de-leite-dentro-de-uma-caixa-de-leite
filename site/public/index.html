@@ -13,11 +13,13 @@
 
 <body id="body">
     <div id="navbar" class="navbar">
-        <div id="logo" class="logo"></div>
-        <a id="anchorNavbar1" href="">Milk Inside </a>
-        <a id="anchorNavbar2" href="">Milk Outside</a>
-        <a id="anchorNavbar3" href="">Criador</a>
-        <a id="anchorNavbar4" href="cadastro.html">Sign In </a>
+        <a href="index.html">
+            <img id="logo" src="imgs/logo.jpg" class="logo">
+        </a>
+        <a id="a_MIBM" href="#corpoMIBM">Milk Inside </a>
+        <a id="a_MOBM" href="#corpoMOBM">Milk Outside</a>
+        <a id="a_Nikita" href="">Criador</a>
+        <a id="a_Cadastro" href="cadastro.html">Sign In </a>
     </div>
     <div class="gradiente_banner"></div>
     <div class="container_banner">
@@ -32,7 +34,7 @@
         <div class="gradiente_corpoX"></div>
         <div class="gradiente_corpoY"></div>
 
-        <div class="corpoMOBM">
+        <div id="corpoMOBM" class="corpoMOBM">
             <div class="subtituloMOBM">
                 <div class="svgs">
                     <svg class="svg1" viewbox="0 0 100 20">
@@ -159,16 +161,24 @@
             </p>
         </div>
         <footer class="footer">
-            <div class="logo"></div>
+            <a href="index.html">
+                <img src="imgs/logo.jpg" class="logo">
+            </a>
             <div class="footer_texto">
                 <span>
                     Todos os direitos reservados &copy;Nikita Kryukov
                 </span>
             </div>
             <div class="footer_redes">
-                <div class="github_icon"></div>
-                <div class="steam_icon"></div>
-                <div class="twitter_icon"></div>
+                <a href="https://github.com/AlyssonAlmeidaSantos">
+                    <img class="github_icon" src="imgs/github-icon.png">
+                </a>
+                <a href="https://steamcommunity.com/profiles/76561198795852838/">
+                    <img class="steam_icon" src="imgs/steam-icon.png">
+                </a>
+                <a href="https://twitter.com/AIyfilho">
+                    <img class="twitter_icon" src="imgs/twitter-icon.jpg">
+                </a>
             </div>
         </footer>
     </div>
@@ -179,19 +189,19 @@
     window.onscroll = function(event) {
         if (this.scrollY > 2800) {
             navbar.style.backgroundColor = '#a8285d27';
-            anchorNavbar1.style.color = '#a8285d';
-            anchorNavbar2.style.color = '#a8285d';
-            anchorNavbar3.style.color = '#a8285d';
-            anchorNavbar4.style.color = '#a8285d';
+            a_MIBM.style.color = '#a8285d';
+            a_MOBM.style.color = '#a8285d';
+            a_Nikita.style.color = '#a8285d';
+            a_Cadastro.style.color = '#a8285d';
             logo.style.filter = 'hue-Rotate(-25deg)';
             container_Corpo.style.filter = 'hue-rotate(-25deg)';
             corpoMIBM.style.filter = 'hue-rotate(25deg)';
         } else {
             navbar.style.backgroundColor = '#a8322827';
-            anchorNavbar1.style.color = '#a83228';
-            anchorNavbar2.style.color = '#a83228';
-            anchorNavbar3.style.color = '#a83228';
-            anchorNavbar4.style.color = '#a83228';
+            a_MIBM.style.color = '#a83228';
+            a_MOBM.style.color = '#a83228';
+            a_Nikita.style.color = '#a83228';
+            a_Cadastro.style.color = '#a83228';
             logo.style.filter = 'hue-Rotate(0)'
             container_Corpo.style.filter = 'hue-rotate(0)';
             corpoMIBM.style.filter = 'hue-rotate(0)';

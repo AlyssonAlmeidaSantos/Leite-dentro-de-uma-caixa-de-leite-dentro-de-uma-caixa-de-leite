@@ -10,23 +10,25 @@
     <title>Milky Site :D</title>
 </head>
 
-<body>
+<body id="Cad_Log">
     <div id="navbar" class="navbar">
-        <div id="logo" class="logo"></div>
-        <a id="anchorNavbar1" href="">História</a>
-        <a id="anchorNavbar2" href="">Jogo</a>
-        <a id="anchorNavbar3" href="">Relation</a>
+        <a href="index.html">
+            <img src="imgs/logo.jpg" class="logo">
+        </a>
+        <a id="anchorNavbar1" href="">Milk Inside </a>
+        <a id="anchorNavbar2" href="">Milk Outside</a>
+        <a id="anchorNavbar3" href="">Criador</a>
         <a id="anchorNavbar4" href="cadastro.html">Sign In </a>
     </div>
 
-    <div class="container">
+    <div class="container_forms">
         <div class="formCad">
 
             <span class="tipo_campo">Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome">
+            <input id="nome_input" type="text" placeholder="Ex. Please Don't">
 
             <span class="tipo_campo">E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com">
+            <input id="email_input" type="text" placeholder="Ex. Fun@of.Me">
 
             <span class="tipo_campo">Senha:</span>
             <input id="senha_input" type="password" placeholder="******">
@@ -37,27 +39,34 @@
             <button class="btn" onclick="Cadastrar()">Cadastrar</button>
             <div id="mensagem_erro"></div>
         </div>
-
-        <footer class="footer">
-            <div class="logo"></div>
-            <div class="footer_texto">
-                <span>
-                    Todos os direitos reservados &copy;Nikita Kryukov
-                </span>
-            </div>
-            <div class="footer_redes">
-                <div class="github_icon"></div>
-                <div class="steam_icon"></div>
-                <div class="twitter_icon"></div>
-            </div>
-        </footer>
+    </div>
+    <footer class="footer">
+        <a href="index.html">
+            <img src="imgs/logo.jpg" class="logo">
+        </a>
+        <div class="footer_texto">
+            <span>
+                Todos os direitos reservados &copy;Nikita Kryukov
+            </span>
+        </div>
+        <div class="footer_redes">
+            <a href="https://github.com/AlyssonAlmeidaSantos">
+                <img class="github_icon" src="imgs/github-icon.png">
+            </a>
+            <a href="https://steamcommunity.com/profiles/76561198795852838/">
+                <img class="steam_icon" src="imgs/steam-icon.png">
+            </a>
+            <a href="https://twitter.com/AIyfilho">
+                <img class="twitter_icon" src="imgs/twitter-icon.jpg">
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>
 
 <script>
     function Cadastrar() {
-
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
