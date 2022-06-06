@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Quanto mais cliques mais felicidade damos pra milky-chan, the more you made her happy, more finals of the game you can see -->
 
 <head>
     <link rel="icon" href="imgs/null.png" />
@@ -17,29 +18,35 @@
         </a>
         <a id="anchorNavbar1" href="">Milk Inside </a>
         <a id="anchorNavbar2" href="">Milk Outside</a>
-        <a id="anchorNavbar3" href="">Criador</a>
+        <a id="anchorNavbar3" href="">Play</a>
         <a id="anchorNavbar4" href="cadastro.html">Sign In </a>
     </div>
 
     <div class="container_forms">
+        <div id="milkGirl" class="milkGirl">
+            <span id="milkGirl_text" class="milkGirl_text">
+                - Qual seu nome?, espero que você seja mais legal que o outro.
+            </span>
+        </div>
         <div class="formCad">
 
-            <span class="tipo_campo">Nome:</span>
+            <span class="tipo_campo">Escreva seu nome:</span>
             <input id="nome_input" type="text" placeholder="Ex. Please Don't">
 
             <span class="tipo_campo">E-mail:</span>
-            <input id="email_input" type="text" placeholder="Ex. Fun@of.Me">
+            <input id="email_input" type="text" placeholder="Ex. Make_Fun@of.Me">
 
             <span class="tipo_campo">Senha:</span>
-            <input id="senha_input" type="password" placeholder="******">
+            <input id="senha_input" type="password" placeholder="********">
 
-            <span class="tipo_campo">Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******">
+            <span class="tipo_campo">Confirme a Senha:</span>
+            <input id="confirmacao_senha_input" type="password" placeholder="********">
 
             <button class="btn" onclick="Cadastrar()">Cadastrar</button>
-            <div id="mensagem_erro"></div>
+            <div id="mensagem_erro" class="mensagem_erro">Trad: Faça seu cadastro.</div>
         </div>
     </div>
+
     <footer class="footer">
         <a href="index.html">
             <img src="imgs/logo.jpg" class="logo">
@@ -73,8 +80,28 @@
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            alert('Preencha todos os campos!')
+            mensagem_erro.innerHTML = 'Trad: Preencha todos os campos!';
+            milkGirl_text.innerHTML = 'Precisamos de todos eles...';
+            milkGirl.style.backgroundImage = 'url(imgs/sad-2.png)';
+        } else if (nomeVar.length < 3) {
+            mensagem_erro.innerHTML = 'Trad: Seu nome precisa ser maior!';
+            milkGirl_text.innerHTML = 'Nunca é o suficiente.';
+            milkGirl.style.backgroundImage = 'url(imgs/normal-1.png)';
+        } else if (emailVar.indexOf('@') < 1) {
+            mensagem_erro.innerHTML = 'Trad: Você esqueceu do @!!';
+            milkGirl_text.innerHTML = 'Não me lembro dele.';
+            milkGirl.style.backgroundImage = 'url(imgs/sad-2.png)';
+        } else if (senhaVar.length < 5) {
+            mensagem_erro.innerHTML = 'Trad: Senha muito curta!';
+            milkGirl_text.innerHTML = ' Por favor, precisamos de algo melhor!';
+            milkGirl.style.backgroundImage = 'url(imgs/normal-1.png)';
+
+        } else if (senhaVar != confirmacaoSenhaVar) {
+            mensagem_erro.innerHTML = 'Trad: Você errou as senhas???';
+            milkGirl_text.innerHTML = 'Ah pela mor de Deus né.'
+            milkGirl.style.backgroundImage = 'url(imgs/normal-2.png)';
         } else {
+            milkGirl_text.innerHTML = 'Bem vindo a minha mente ' + varNome + ', obrigada por me ajudar.';
             fetch("/usuarios/cadastrar", {
                 method: "POST",
                 headers: {
@@ -91,13 +118,15 @@
 
                 if (resposta.ok) {
 
-                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                    mensagem_erro.innerHTML = "*Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                     setTimeout(() => {
                         window.location = "index.html";
                     }, "2000")
 
                 } else {
+                    alert('putamerda')
+                    mensagem_erro.innerHTML = '*Oh não';
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
             }).catch(function(resposta) {
