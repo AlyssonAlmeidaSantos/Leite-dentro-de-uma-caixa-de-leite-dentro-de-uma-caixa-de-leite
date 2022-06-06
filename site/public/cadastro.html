@@ -24,9 +24,9 @@
 
     <div class="container_forms">
         <div id="milkGirl" class="milkGirl">
-            <span id="milkGirl_text" class="milkGirl_text">
-                - Qual seu nome?, espero que você seja mais legal que o outro.
-            </span>
+            <div class="milkGirl_text">
+                <div id="typedtext"></div>
+            </div>
         </div>
         <div class="formCad">
 
@@ -73,6 +73,43 @@
 </html>
 
 <script>
+    var aText = new Array(
+        "- Alô :D <br /> Eu te trouxe aqui pra me ajudar a comprar leite, Pode me lembrar quem é você?"
+    );
+    var iSpeed = 50; // time delay of print out
+    var iIndex = 0; // start printing array at this posision
+    var iArrLength = aText[0].length; // the length of the text array
+    var iScrollAt = 20; // start scrolling up at this many lines
+
+    var iTextPos = 0; // initialise text position
+    var sContents = ''; // initialise contents variable
+    var iRow; // initialise current row
+
+    function typewriter() {
+        sContents = ' ';
+        iIndex = 0;
+        iScrollAt = 20;
+        iRow = Math.max(0, iIndex - iScrollAt);
+        var destination = document.getElementById("typedtext");
+
+        while (iRow < iIndex) {
+            sContents += aText[iRow++] + '<br />';
+        }
+        destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos);
+        if (iTextPos++ == iArrLength) {
+            iTextPos = 0;
+            iIndex++;
+            if (iIndex != aText.length) {
+                iArrLength = aText[iIndex].length;
+                setTimeout("typewriter()", 500);
+            }
+        } else {
+            setTimeout("typewriter()", iSpeed);
+        }
+    }
+    typewriter();
+
+
     function Cadastrar() {
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
@@ -81,27 +118,47 @@
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             mensagem_erro.innerHTML = 'Trad: Preencha todos os campos!';
-            milkGirl_text.innerHTML = 'Precisamos de todos eles...';
             milkGirl.style.backgroundImage = 'url(imgs/sad-2.png)';
+            typedtext.innerHTML = '';
+            aText = Array(
+                "- Precisamos de todos eles..."
+            );
+            typewriter();
         } else if (nomeVar.length < 3) {
             mensagem_erro.innerHTML = 'Trad: Seu nome precisa ser maior!';
-            milkGirl_text.innerHTML = 'Nunca é o suficiente.';
             milkGirl.style.backgroundImage = 'url(imgs/normal-1.png)';
+            typedtext.innerHTML = '';
+            aText = Array(
+                "- Nunca é o suficiente."
+            );
+            typewriter();
         } else if (emailVar.indexOf('@') < 1) {
             mensagem_erro.innerHTML = 'Trad: Você esqueceu do @!!';
-            milkGirl_text.innerHTML = 'Não me lembro dele.';
             milkGirl.style.backgroundImage = 'url(imgs/sad-2.png)';
+            typedtext.innerHTML = '';
+            aText = Array(
+                "- Também não me lembro dele."
+            );
+            typewriter();
         } else if (senhaVar.length < 5) {
             mensagem_erro.innerHTML = 'Trad: Senha muito curta!';
-            milkGirl_text.innerHTML = ' Por favor, precisamos de algo melhor!';
             milkGirl.style.backgroundImage = 'url(imgs/normal-1.png)';
+            typedtext.innerHTML = '';
+            aText = Array(
+                "- Por favor, precisamos de algo melhor!"
+            );
+            typewriter();
 
         } else if (senhaVar != confirmacaoSenhaVar) {
             mensagem_erro.innerHTML = 'Trad: Você errou as senhas???';
-            milkGirl_text.innerHTML = 'Ah pela mor de Deus né.'
             milkGirl.style.backgroundImage = 'url(imgs/normal-2.png)';
+            typedtext.innerHTML = '';
+            aText = Array(
+                "- Ah pela mor de Deus né."
+            );
+            typewriter();
         } else {
-            milkGirl_text.innerHTML = 'Bem vindo a minha mente ' + varNome + ', obrigada por me ajudar.';
+            milkGirl_text.innerHTML = 'Obrigada ' + varNome + ', obrigada por me ajudar.';
             fetch("/usuarios/cadastrar", {
                 method: "POST",
                 headers: {
@@ -117,15 +174,13 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-
-                    mensagem_erro.innerHTML = "*Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                    mensagem_erro.innerHTML = "Trad: Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                     setTimeout(() => {
-                        window.location = "index.html";
+                        window.location = "Login.html";
                     }, "2000")
 
                 } else {
-                    alert('putamerda')
                     mensagem_erro.innerHTML = '*Oh não';
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
