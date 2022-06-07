@@ -10,30 +10,30 @@
     <title>Mini-Game</title>
 </head>
 
-<body id="bodyMiniGame" onload="SetTamanho()/* validarSessao ()*/">
+<body id="bodyMiniGame">
     <div id="navbar" class="navbar">
         <a href="index.html">
             <img id="logo" src="imgs/logo.jpg" class="logo">
         </a>
         <a id="a_MIBM" href="#corpoMIBM">Milk Inside </a>
         <a id="a_MOBM" href="#corpoMOBM">Milk Outside</a>
-        <a id="a_Nikita" href="metrica.html">Musicas</a>
+        <a id="a_Nikita" href="game.html">Play</a>
         <a id="a_Cadastro" href="cadastro.html">Sign In </a>
     </div>
     <div class="containerContainers">
         <div class="clickerContainer">
             <div class="dica">
                 Detenha a expansão do
-                <img src="../../References/miscellaneous/o-logo.png" style="width: 100px;height:100px"> clicando nele isso diminuirá o desespero da garotinha.
+                <img src="../imgs/o-logo.png" style="width: 100px;height:100px"> clicando nele isso diminuirá o desespero da garotinha.
                 <div id="countdown"></div>
             </div>
             <button id="img" onclick="DesenlargeImg()" class="O"></button>
             <div id="resultado" class="resultado">
                 <div id="pontuacao">Sua pontuação foi de: <br /> <b id="pontos">XXX</b><span>pts</span></div>
                 <input id="Iniciais" placeholder="Ex. AAS" maxlength="3">
-                <button onclick="">Registrar</button>
-                <button onclick="">De novo!</button>
+                <button onclick="registrar()">Registrar</button>
                 <button href="index.html">Sair</button>
+                <a href="finais.html">Ver recompensa</a>
             </div>
             <div id="NíveldeSanidade">Nível de Sanidade:</div>
             <div id="LiveReaction" class="LiveReaction"></div>
@@ -64,6 +64,43 @@
 
 </html>
 <script>
+    let tentativas = [];
+
+    function registrar() {
+        var pontuacaoVar = pontos.value;
+        var iniciaisVar = Iniciais.value;
+
+        fetch("/usuarios/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                pontuacaoServer: pontuacaoVar,
+                iniciaisServer: iniciaisVar
+            })
+        }).then(function(resposta) {
+
+            console.log("resposta:", resposta);
+
+            if (resposta.ok) {
+
+                setTimeout(() => {
+                    window.location = "index.html";
+                }, "2000")
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function(resposta) {
+            console.log(`#ERRO: cara ${resposta}`);
+        });
+        return false;
+    }
+
+
     const IniciarJogo = setInterval(EnlargeImg, 10);
     const ParaJogo = setTimeout(Parar, 30000);
     var tamanhoAtual = 0;
@@ -74,11 +111,10 @@
             clearInterval(DiminuirTempo);
             document.getElementById("countdown").innerHTML = "Finished";
         } else {
-            document.getElementById("countdown").innerHTML = Tempo + " segundos para o fim";
+            document.getElementById("countdown").innerHTML = Tempo + "segundos para o fim";
         }
         Tempo -= 1;
     }, 1000);
-
 
     function Parar() {
         clearInterval(IniciarJogo);
@@ -126,9 +162,7 @@
     function MedirO() {
         var pontuacao = (2000 - (Number(img.style.width.replace('px', '')))).toFixed(0);
         pontos.innerHTML = pontuacao;
+        tentativas.push(pontuacao);
         resultado.style.zIndex = '5';
-        if (pontuacao == 0) {
-
-        }
     }
 </script>
