@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="imgs/null.png" />
+    <link rel="stylesheet" href="css\style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Game</title>
+</head>
+
+<body id="bodyMiniGame" onload="SetTamanho()/* validarSessao ()*/">
+    <div id="navbar" class="navbar">
+        <a href="index.html">
+            <img id="logo" src="imgs/logo.jpg" class="logo">
+        </a>
+        <a id="a_MIBM" href="#corpoMIBM">Milk Inside </a>
+        <a id="a_MOBM" href="#corpoMOBM">Milk Outside</a>
+        <a id="a_Nikita" href="metrica.html">Musicas</a>
+        <a id="a_Cadastro" href="cadastro.html">Sign In </a>
+    </div>
+    <div class="containerContainers">
+        <div class="clickerContainer">
+            <div class="dica">
+                Detenha a expansão do
+                <img src="imgs/O.png" style="width: 25px;height:25px"> clicando nele isso diminuirá o desespero da garotinha
+                <div id="countdown"></div>
+            </div>
+            <button id="img" onclick="DesenlargeImg()" class="O"></button>
+            <div id="resultado" class="resultado">
+                <div id="pontuacao">Sua pontuação foi de: <br /> <b id="pontos">XXX</b><span>pts</span></div>
+                <input id="Iniciais" placeholder="Ex. AAS" maxlength="3">
+                <button onclick="">Registrar</button>
+                <button onclick="">De novo!</button>
+                <button href="index.html">Sair</button>
+            </div>
+            <div id="LiveReaction" class="LiveReaction">Live Reaction</div>
+        </div>
+    </div>
+    <footer class="footer">
+        <a href="index.html">
+            <img src="imgs/logo.jpg" class="logo">
+        </a>
+        <div class="footer_texto">
+            <span>
+                Todos os direitos reservados &copy;Nikita Kryukov
+            </span>
+        </div>
+        <div class="footer_redes">
+            <a href="https://github.com/AlyssonAlmeidaSantos">
+                <img class="github_icon" src="imgs/github-icon.png">
+            </a>
+            <a href="https://steamcommunity.com/profiles/76561198795852838/">
+                <img class="steam_icon" src="imgs/steam-icon.png">
+            </a>
+            <a href="https://twitter.com/AIyfilho">
+                <img class="twitter_icon" src="imgs/twitter-icon.jpg">
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script>
+    const IniciarJogo = setInterval(EnlargeImg, 10);
+    const ParaJogo = setTimeout(Parar, 30000);
+
+    var PodeFixarTamanho = false;
+    var Tempo = 30;
+    var DiminuirTempo = setInterval(function() {
+        if (Tempo <= 0) {
+            clearInterval(DiminuirTempo);
+            document.getElementById("countdown").innerHTML = "Finished";
+        } else {
+            document.getElementById("countdown").innerHTML = Tempo + " seconds remaining";
+        }
+        Tempo -= 1;
+    }, 1000);
+
+
+    function Parar() {
+        clearInterval(IniciarJogo);
+        PodeFixarTamanho = true;
+    }
+
+    function SetTamanho() {
+        img.style.width = '200px';
+        img.style.height = '200px';
+    }
+
+    function EnlargeImg() {
+        var diferenca = (((img.style.width.replace('px', '')) * 1) + 0.7) + 'px';
+        img.style.height = diferenca;
+        img.style.width = diferenca;
+    }
+
+    function DesenlargeImg() {
+        if (PodeFixarTamanho) {
+            MedirO();
+        } else {
+            var diminui = ((img.style.width.replace('px', '')) - 10) + 'px';
+            img.style.height = diminui;
+            img.style.width = diminui;
+        }
+    }
+
+    function MedirO() {
+        var pontuacao = (2000 - (Number(img.style.width.replace('px', '')))).toFixed(0);
+        pontos.innerHTML = pontuacao;
+        resultado.style.zIndex = '5';
+        if (pontuacao == 0) {
+
+        }
+    }
+</script>

@@ -3,12 +3,27 @@
 -- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
 /* para workbench - local - desenvolvimento */
 CREATE DATABASE MilkySite;
-
 USE MilkySite;
 
 CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	Nome VARCHAR(50),
-	Email VARCHAR(50),
-	Senha VARCHAR(50)
+idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+Nome VARCHAR(50),
+Email VARCHAR(50),
+Senha VARCHAR(50),
+fkNvlAmizade int,
+foreign key (fkNvlAmizade) references RankAmizade(idAmizade),
+fkMusicaFav int,
+foreign key (fkMusicaFav) references Musica(idMusica)
 );
+
+CREATE TABLE Musica(
+idMusica int primary key auto_increment,
+NomeMusica varchar(45),
+DuracaoMin int,
+Classificacao varchar(45)
+);
+
+CREATE TABLE RankAmizade(
+idAmizade int primary key auto_increment,
+NvlAmizade int,
+Vacilos int);
