@@ -24,7 +24,7 @@
         <div class="clickerContainer">
             <div class="dica">
                 Detenha a expansão do
-                <img src="imgs/O.png" style="width: 25px;height:25px"> clicando nele isso diminuirá o desespero da garotinha
+                <img src="../../References/miscellaneous/o-logo.png" style="width: 100px;height:100px"> clicando nele isso diminuirá o desespero da garotinha.
                 <div id="countdown"></div>
             </div>
             <button id="img" onclick="DesenlargeImg()" class="O"></button>
@@ -35,7 +35,8 @@
                 <button onclick="">De novo!</button>
                 <button href="index.html">Sair</button>
             </div>
-            <div id="LiveReaction" class="LiveReaction">Live Reaction</div>
+            <div id="NíveldeSanidade">Nível de Sanidade:</div>
+            <div id="LiveReaction" class="LiveReaction"></div>
         </div>
     </div>
     <footer class="footer">
@@ -65,7 +66,7 @@
 <script>
     const IniciarJogo = setInterval(EnlargeImg, 10);
     const ParaJogo = setTimeout(Parar, 30000);
-
+    var tamanhoAtual = 0;
     var PodeFixarTamanho = false;
     var Tempo = 30;
     var DiminuirTempo = setInterval(function() {
@@ -73,7 +74,7 @@
             clearInterval(DiminuirTempo);
             document.getElementById("countdown").innerHTML = "Finished";
         } else {
-            document.getElementById("countdown").innerHTML = Tempo + " seconds remaining";
+            document.getElementById("countdown").innerHTML = Tempo + " segundos para o fim";
         }
         Tempo -= 1;
     }, 1000);
@@ -93,6 +94,23 @@
         var diferenca = (((img.style.width.replace('px', '')) * 1) + 0.7) + 'px';
         img.style.height = diferenca;
         img.style.width = diferenca;
+        tamanhoAtual = img.style.width.replace('px', '');
+        AttStatus(tamanhoAtual);
+    }
+
+    function AttStatus() {
+        if (tamanhoAtual < 300) {
+            LiveReaction.style.backgroundImage = 'url(imgs/despair-1.jpg)';
+        } else if (tamanhoAtual < 600) {
+            LiveReaction.style.backgroundImage = 'url(imgs/despair-2.gif)';
+        } else if (tamanhoAtual < 900) {
+            LiveReaction.style.backgroundImage = 'url(imgs/despair-3.jpg)';
+        } else if (tamanhoAtual < 1200) {
+            LiveReaction.style.backgroundImage = 'url(imgs/despair-4.jpg)';
+        } else {
+            LiveReaction.style.backgroundImage = 'url(imgs/despair-5.jpg)';
+        }
+
     }
 
     function DesenlargeImg() {
